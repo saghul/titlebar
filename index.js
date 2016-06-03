@@ -28,11 +28,15 @@ var TitleBar = function(options) {
 	var minimize = $('.titlebar-minimize', element)[0];
 	var fullscreen = $('.titlebar-fullscreen', element)[0];
 
+	if (this._options.disableFullScreen) {
+	        fullscreen.style['display'] = 'none';
+        }
+
 	$element.on('click', function(e) {
 		var target = e.target;
 		if(close.contains(target)) self.emit('close', e);
 		else if(minimize.contains(target)) self.emit('minimize', e);
-		else if(fullscreen.contains(target)) {
+		else if(!this._options.disableFullScreen && fullscreen.contains(target)) {
 			if(e.altKey) self.emit('maximize', e);
 			else self.emit('fullscreen', e);
 		}
@@ -40,7 +44,7 @@ var TitleBar = function(options) {
 
 	$element.on('dblclick', function(e) {
 		var target = e.target;
-		if(close.contains(target) || minimize.contains(target) || fullscreen.contains(target)) return;
+		if(close.contains(target) || minimize.contains(target) || (!this._options.disableFullScreen && fullscreen.contains(target))) return;
 		self.emit('maximize', e);
 	});
 };

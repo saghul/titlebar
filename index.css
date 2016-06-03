@@ -42,7 +42,8 @@
 
 .titlebar-close,
 .titlebar-minimize,
-.titlebar-fullscreen {
+.titlebar-fullscreen,
+.titlebar-fullscreen-disabled {
 	float: left;
 	width: 10px;
 	height: 10px;
@@ -53,7 +54,8 @@
 
 .titlebar.webkit-draggable .titlebar-close,
 .titlebar.webkit-draggable .titlebar-minimize,
-.titlebar.webkit-draggable .titlebar-fullscreen {
+.titlebar.webkit-draggable .titlebar-fullscreen,
+.titlebar.webkit-draggable .titlebar-fullscreen-disabled {
 	-webkit-app-region: no-drag;
 }
 
@@ -120,4 +122,17 @@
 	margin-left: 1px;
 	opacity: 0;
 	display: none;
+}
+
+.titlebar-fullscreen-disabled {
+        border: 1px solid #a1a1a1;
+        background-color: #c5c5c5;
+}
+
+.titlebar-fullscreen-disabled svg {
+	width: 8px;
+	height: 8px;
+	margin-top: 1px;
+	margin-left: 1px;
+	opacity: 0;
 }
